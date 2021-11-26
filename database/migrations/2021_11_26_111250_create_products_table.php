@@ -15,6 +15,16 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('slug');
+            $table->string('barcode_code');
+            $table->string('product_code');
+            $table->string('description');
+            $table->unsignedBigInteger('category_id');
+            $table->enum('unit',['piece', 'package', 'meter','kg'])->defaut('piece');
+            $table->float('min_stock');
+            $table->float('remaining');
+            $table->string('image');
             $table->timestamps();
         });
     }
