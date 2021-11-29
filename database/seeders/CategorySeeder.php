@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -13,6 +15,17 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
+
+        $faker = Factory::create();
+        for ($i = 0; $i < 10; $i++) {
+        Category::create([
+            'name' => $faker->name,
+            'up_id' => rand(1,16),
+
+
+        ]);
+    }
+    
         //
     }
 }
