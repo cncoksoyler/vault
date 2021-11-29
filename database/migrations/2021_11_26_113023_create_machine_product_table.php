@@ -14,8 +14,14 @@ class CreateMachineProductTable extends Migration
     public function up()
     {
         Schema::create('machine_product', function (Blueprint $table) {
-            $table->id();
+            $table->id();            
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('machine_id');
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete();
+            $table->foreign('machine_id')->references('id')->on('machines')->cascadeOnDelete();
+
         });
     }
 

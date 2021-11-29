@@ -15,6 +15,9 @@ class CreateMachinesTable extends Migration
     {
         Schema::create('machines', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->enum('AMG',['AMG7','AMG8']);
+            $table->enum('area',['stamping','assembly','overmoulding','plating','heat treatement','fineblanking','others']);
             $table->timestamps();
         });
     }

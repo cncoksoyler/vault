@@ -15,6 +15,7 @@ class CreateInputSourcesTable extends Migration
     {
         Schema::create('input_sources', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }
