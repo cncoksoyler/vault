@@ -30,7 +30,7 @@ class ProductSeeder extends Seeder
                 
                 'slug' => Str::slug($name),
                 'barcode_code' => $faker->numerify('#######'),
-                'product_code' => $faker->asciify('###-###-###'),
+                'product_code' => $faker->bothify('#?#-#??-?##'),
                 'description' => $faker->text(),
                 'category_id' => $faker->randomElement($categories),
                 'unit' =>$unitEnum[rand(0,3)],
