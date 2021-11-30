@@ -6,6 +6,7 @@ use App\Models\Location;
 use App\Models\Product;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class LocationSeeder extends Seeder
 {
@@ -20,14 +21,12 @@ class LocationSeeder extends Seeder
         
         for ($i=0;$i<10;$i++){
             
-            $product = Product::create([
-                'name'=>$faker->sentence(),
-                
-            ]);
+            $product = Product::all()->pluck('id')->toArray();
 
             Location::create([
+         
             'name'=> $faker->name,
-            'product_id'=> $product->id,
+            'product_id'=> $faker->randomElement($product),
             'stock'=>rand(1,3500),
 
 

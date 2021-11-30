@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(MachineSeeder::class);
 
-        $this->call(InputSource::class);
+        $this->call(InputSourceSeeder::class);
 
-        $this->call(Location::class);
+        $this->call(LocationSeeder::class);
     }
 }
