@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\InputSource;
+use App\Models\Location;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +20,15 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
 
         $this->call(MachineSeeder::class);
+
+        $this->call(ProductSeeder::class);
+
+        $this->call(InputSourceSeeder::class);
+
+        $this->call(LocationSeeder::class);
+
+        $this->call(StockDetailSeeder::class);
+       
 
     }
 }

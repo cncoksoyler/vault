@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
@@ -16,9 +17,16 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
+<<<<<<< HEAD
         $name 
         $faker = Factory::create();
         $categories = Category::all()->pluck('id')->toArray();
+=======
+        
+        $faker = Factory::create();
+        $categories = Category::all()->pluck('id')->toArray();
+
+>>>>>>> 2754d78fada049d6043d5a3cf629c695e553efc2
         $unitEnum = ['piece', 'package', 'meter','kg'];
         for ($i = 0;$i<10; $i++) {
             $name = $faker->name;
@@ -27,7 +35,11 @@ class ProductSeeder extends Seeder
                 
                 'name' => $name,
                 
+<<<<<<< HEAD
                 'slug' => Str::slug($name) ,
+=======
+                'slug' => Str::slug($name),
+>>>>>>> 2754d78fada049d6043d5a3cf629c695e553efc2
                 'barcode_code' => $faker->numerify('#######'),
                 'product_code' => $faker->asciify('###-###-###'),
                 'description' => $faker->text(),
