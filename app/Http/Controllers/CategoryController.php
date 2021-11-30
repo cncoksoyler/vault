@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Location;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       $product = Product::all();
-       dd($product);
-       return view('test')->with('product');
+       $location = Location::all();
+       //dd($location);
+       return view('test')->with(['location'=>$location]);
         
         //
     }

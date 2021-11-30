@@ -26,5 +26,5 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 #New Views
-Route::get('/test',CategoryController::class,'index')->name('homepage');
+Route::get('/test',[CategoryController::class,'index'])->name('testpage');
 

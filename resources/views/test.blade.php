@@ -8,5 +8,6 @@
 </head>
 <body>
     Test Page
+    @dump($location)
 </body>
 </html>
