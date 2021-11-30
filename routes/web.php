@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 #Eski Views
-/* Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -23,8 +23,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php'; */
+require __DIR__.'/auth.php';
 
 #New Views
-Route::get('/',CategoryController::class,'index')->name('homepage');
+Route::get('/test',CategoryController::class,'index')->name('homepage');
 

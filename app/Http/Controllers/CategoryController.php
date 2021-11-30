@@ -17,6 +17,7 @@ class CategoryController extends Controller
     {
        $product = Product::all();
        dd($product);
+       return view('test')->with('product');
         
         //
     }
