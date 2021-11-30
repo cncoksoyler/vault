@@ -20,6 +20,7 @@ class ProductSeeder extends Seeder
         
         $faker = Factory::create();
         $categories = Category::all()->pluck('id')->toArray();
+
         $unitEnum = ['piece', 'package', 'meter','kg'];
         for ($i = 0;$i<10; $i++) {
             $name = $faker->name;
