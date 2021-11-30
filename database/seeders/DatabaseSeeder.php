@@ -21,10 +21,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call(MachineSeeder::class);
 
+        $this->call(ProductSeeder::class);
+
         $this->call(InputSourceSeeder::class);
 
         $this->call(LocationSeeder::class);
-        $this->call(ProductSeeder::class);
+
+        $this->call(StockDetailSeeder::class);
+       
 
     }
 }
