@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     use HasFactory;
+
+
+    public function modelLocation(){
+        return $this->belongsTo(Product::class,'product_id');
+    }
 }

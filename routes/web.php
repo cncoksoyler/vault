@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-
+use App\Http\Controllers\StockDetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +23,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/location', [CategoryController::class,'index'])->middleware(['auth'])->name('location');
+Route::get('/stockdetail', [StockDetailController::class,'index'])->middleware(['auth'])->name('stockdetail');
+
 require __DIR__.'/auth.php';
 
 #New Views
-Route::get('/test',[CategoryController::class,'index'])->name('testpage');
+/* Route::get('/',[CategoryController::class,'index'])->name('testpage'); */
 

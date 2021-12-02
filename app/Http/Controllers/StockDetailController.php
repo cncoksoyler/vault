@@ -15,6 +15,14 @@ class StockDetailController extends Controller
     public function index()
     {
         //
+        $stock = StockDetail::with('modelProducts','modelLocations','modelUsers','modelInputSources')->get()->toArray();
+  
+      /*  dd($stock); */
+
+        return view('stockdetail')->with([
+            'stock'=>$stock,
+        ]);
+         
     }
 
     /**

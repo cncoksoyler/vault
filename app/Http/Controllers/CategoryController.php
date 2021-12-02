@@ -16,9 +16,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       $location = Location::all();
-       //dd($location);
-       return view('test')->with(['location'=>$location]);
+      
+       $location = Location::with('modelLocation')->get()->toArray();
+        
+        
+
+
+       return view('location')->with(['location'=>$location]);
         
         //
     }
