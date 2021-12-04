@@ -16,14 +16,20 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        if (\request()->filled('search')) {
+        $search = \request()->search;
+        $category = Category::
+            where('name', 'like', "%$search%")
+            ->orderBy('id', 'DESC')
+            ->paginate(5)
+            ->appends('search', $search);             
       
-       $location = Location::with('modelLocation')->get()->toArray();
-        
-        
-
-
-       return view('location')->with(['location'=>$location]);
-        
+        }else{
+        $category = Category::
+            orderBy('id', 'DESC')
+            ->paginate(5);        
+        };
+        return view('category/categorylist')->with(['category'=>$category]);
         //
     }
 

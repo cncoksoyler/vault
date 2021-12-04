@@ -15,6 +15,11 @@ class LocationController extends Controller
     public function index()
     {
         //
+        $location = Location::with('modelLocation')->paginate(5);    
+        
+        
+
+       return view('location')->with(['location'=>$location]);
     }
 
     /**

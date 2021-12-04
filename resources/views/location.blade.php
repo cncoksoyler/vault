@@ -22,24 +22,26 @@
                               </tr>
                             </thead>
                             <tbody class="bg-white">      
-                              
+                            )
                                
                                 @foreach ($location as $item )               
                                
                               <tr class="text-gray-700">
-                                <td class="px-4 py-3 border text-md font-semibold">{{$item["id"]}}</td>
-                                <td class="px-4 py-3 border text-md font-semibold">{{$item["name"]}}</td>
-                                <td class="px-4 py-3 border text-md font-semibold">{{$item["product_id"]}}</td>
-                                <td class="px-4 py-3 border text-md font-semibold">{{$item["stock"]}}</td>
-                                <td class="px-4 py-3 border text-md font-semibold">{{$item["model_location"]["name"]}}</td>
+                                <td class="px-4 py-3 border text-md font-semibold">{{$item->id}}</td>
+                                <td class="px-4 py-3 border text-md font-semibold">{{$item->name}}</td>
+                                <td class="px-4 py-3 border text-md font-semibold">{{$item->product_id}}</td>
+                                <td class="px-4 py-3 border text-md font-semibold">{{$item->stock}}</td>
+                                <td class="px-4 py-3 border text-md font-semibold">{{$item->modelLocation->name}}</td>
                               </tr>
                               @endforeach
                             </tbody>
                           </table>
                         </div>
                       </div>
+                      {{$location->links()}}
                 </div>
             </div>
         </div>
     </div>
+    
 </x-app-layout>

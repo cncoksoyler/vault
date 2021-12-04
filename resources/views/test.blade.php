@@ -1,53 +1,256 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="flex flex-col text-left">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div
+        class="
+          shadow
+          overflow-hidden
+          border-b border-gray-200
+          sm:rounded-lg
+        "
+      >
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th
+                scope="col"
+                class="
+                  px-6
+                  py-3
+                  text-left text-xs
+                  font-medium
+                  text-gray-500
+                  uppercase
+                  tracking-wider
+                "
+              >
+                Name
+              </th>
+              <th
+                scope="col"
+                class="
+                  px-6
+                  py-3
+                  text-left text-xs
+                  font-medium
+                  text-gray-500
+                  uppercase
+                  tracking-wider
+                "
+              >
+                Title
+              </th>
+              <th
+                scope="col"
+                class="
+                  px-6
+                  py-3
+                  text-left text-xs
+                  font-medium
+                  text-gray-500
+                  uppercase
+                  tracking-wider
+                "
+              >
+                Status
+              </th>
+              <th
+                scope="col"
+                class="
+                  px-6
+                  py-3
+                  text-left text-xs
+                  font-medium
+                  text-gray-500
+                  uppercase
+                  tracking-wider
+                "
+              >
+                Role
+              </th>
+              <th scope="col" class="relative px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img
+                      class="h-10 w-10 rounded-full"
+                      src="https://images.unsplash.com/photo-1619914775389-748e5e136c26?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIwMTk4MjAw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100"
+                      alt=""
+                    />
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      Flora Wu
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      flora.wu@example.com
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">Software engineer</div>
+                <div class="text-sm text-gray-500">IT</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span
+                  class="
+                    px-2
+                    inline-flex
+                    text-xs
+                    leading-5
+                    font-semibold
+                    rounded-full
+                    bg-green-100
+                    text-green-800
+                  "
+                >
+                  Active
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                Admin
+              </td>
+              <td
+                class="
+                  px-6
+                  py-4
+                  whitespace-nowrap
+                  text-right text-sm
+                  font-medium
+                "
+              >
+                <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img
+                      class="h-10 w-10 rounded-full"
+                      src="https://images.unsplash.com/photo-1620037624682-f9c156d0286f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIwMTk4Mzc2&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100"
+                      alt=""
+                    />
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      Nida Povey
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      nida.povey@example.com
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">CMO</div>
+                <div class="text-sm text-gray-500">Marketing</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span
+                  class="
+                    px-2
+                    inline-flex
+                    text-xs
+                    leading-5
+                    font-semibold
+                    rounded-full
+                    bg-green-100
+                    text-green-800
+                  "
+                >
+                  Active
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                Member
+              </td>
+              <td
+                class="
+                  px-6
+                  py-4
+                  whitespace-nowrap
+                  text-right text-sm
+                  font-medium
+                "
+              >
+                <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                  >Edit</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0 h-10 w-10">
+                    <img
+                      class="h-10 w-10 rounded-full"
+                      src="https://images.unsplash.com/photo-1619961602105-16fa2a5465c2?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=100&ixid=MnwxfDB8MXxyYW5kb218fHx8fHx8fHwxNjIwMTk4NDAw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=100"
+                      alt=""
+                    />
+                  </div>
+                  <div class="ml-4">
+                    <div class="text-sm font-medium text-gray-900">
+                      Warren Nixon
+                    </div>
+                    <div class="text-sm text-gray-500">
+                      warren.nixon@example.com
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-900">Designer</div>
+                <div class="text-sm text-gray-500">UI/UX</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span
+                  class="
+                    px-2
+                    inline-flex
+                    text-xs
+                    leading-5
+                    font-semibold
+                    rounded-full
+                    bg-green-100
+                    text-green-800
+                  "
+                >
+                  Active
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                Owner
+              </td>
+              <td
+                class="
+                  px-6
+                  py-4
+                  whitespace-nowrap
+                  text-right text-sm
+                  font-medium
+                "
+              >
+                <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                  >Edit</a
+                >
+              </td>
+            </tr>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0ed3cf">
- 
-
-    <title> </title>
-
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.4/dist/tailwind.min.css">
-</head>
-<body class="bg-gray-200">
-
-    <section class="container mx-auto p-6 font-mono">
-  <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
-    <div class="w-full overflow-x-auto">
-      <table class="w-full">
-        <thead>
-          <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-            <th class="px-4 py-3">Id</th>
-            <th class="px-4 py-3">Name</th>
-            <th class="px-4 py-3">Product Id</th>
-            <th class="px-4 py-3">Stock</th>
-            <th class="px-4 py-3">Product Name</th>
-          </tr>
-        </thead>
-        <tbody class="bg-white">      
-          
-           
-            @foreach ($location as $item )               
-           
-          <tr class="text-gray-700">
-            <td class="px-4 py-3 border text-md font-semibold">{{$item["id"]}}</td>
-            <td class="px-4 py-3 border text-md font-semibold">{{$item["name"]}}</td>
-            <td class="px-4 py-3 border text-md font-semibold">{{$item["product_id"]}}</td>
-            <td class="px-4 py-3 border text-md font-semibold">{{$item["stock"]}}</td>
-            <td class="px-4 py-3 border text-md font-semibold">{{$item["model_location"]["name"]}}</td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
+            <!-- More people... -->
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</section>
-</body>
-</html>
+</div>
+

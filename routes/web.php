@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\StockDetailController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/location', [CategoryController::class,'index'])->middleware(['auth'])->name('location');
-Route::get('/stockdetail', [StockDetailController::class,'index'])->middleware(['auth'])->name('stockdetail');
+Route::group(['middleware' => 'auth'], function () {
 
+Route::get('/location', [LocationController::class,'index'])->name('location');
+Route::get('/category', [CategoryController::class,'index'])->name('category');
+Route::post('/category', [CategoryController::class,'index'])->name('category.post');
+Route::get('/stockdetail', [StockDetailController::class,'index'])->name('stockdetail');
+});
+Route::view('/test', 'test');
 require __DIR__.'/auth.php';
 
 #New Views

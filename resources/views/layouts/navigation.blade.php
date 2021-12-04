@@ -25,6 +25,11 @@
                     <x-nav-link :href="route('stockdetail')" :active="request()->routeIs('stockdetail')">
                         {{ __('Stockdetail') }}
                     </x-nav-link>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('category')" :active="request()->routeIs('category')">
+                            {{ __('Category') }}
+                        </x-nav-link>
+                    </div>
                 </div>
             </div>
 
