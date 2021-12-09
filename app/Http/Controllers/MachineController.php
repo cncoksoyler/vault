@@ -14,7 +14,10 @@ class MachineController extends Controller
      */
     public function index()
     {
-        //
+        // return 'index';
+        $machines = Machine::all();
+        // dd($machines);
+        return view('machines',compact('machines'));
     }
 
     /**
@@ -24,7 +27,8 @@ class MachineController extends Controller
      */
     public function create()
     {
-        //
+        $machineData = Machine::all();
+        return view('machines.machine_add', compact('machineData'));
     }
 
     /**
@@ -35,7 +39,14 @@ class MachineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //buraya validateCategory tarzı bir fonkisyon alınabilir
+        Machine::create([
+            'name'=>$request->name,
+            'AMG'=> $request->AMG,
+            'area'=>$request->area
+
+        ]);
+        return 'store';
     }
 
     /**
@@ -46,7 +57,7 @@ class MachineController extends Controller
      */
     public function show(Machine $machine)
     {
-        //
+        return 'show';
     }
 
     /**
@@ -57,7 +68,7 @@ class MachineController extends Controller
      */
     public function edit(Machine $machine)
     {
-        //
+        return 'edit';
     }
 
     /**
@@ -69,7 +80,7 @@ class MachineController extends Controller
      */
     public function update(Request $request, Machine $machine)
     {
-        //
+        return 'update';
     }
 
     /**
@@ -80,6 +91,6 @@ class MachineController extends Controller
      */
     public function destroy(Machine $machine)
     {
-        //
+        return 'destroy';
     }
 }

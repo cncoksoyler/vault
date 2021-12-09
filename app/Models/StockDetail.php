@@ -12,19 +12,20 @@ class StockDetail extends Model
  
 
 public function modelProducts(){
-    return $this->belongsTo(Product::class,'id');
+    return $this->belongsTo(Product::class,'product_id');
+    
 }
 
 public function modelLocations(){
-    return $this->belongsTo(Location::class,'id');
+    return $this->belongsTo(Location::class,'location_id');
 }
 
 public function modelUsers(){
-    return $this->belongsTo(User::class,'id');
+    return $this->belongsTo(User::class,'user_id');
 }
 
 public function modelInputSources(){
-    return $this->belongsTo(InputSource::class,'id');
+    return $this->belongsTo(InputSource::class,'input_source_id');
 }
 
 // public function modelForStock(){
