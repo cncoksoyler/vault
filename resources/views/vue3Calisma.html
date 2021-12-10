@@ -11,9 +11,7 @@
 </head>
 <body>
     <div id="app">
-    <h1>{{header}}</h1>
-
-       
+    
 <!-- Tablo baslangic -->
         <div class="container">
             <div class="row">
@@ -28,31 +26,31 @@
                             <th>Soyad</th>
                             <th>Email</th>
                             <th>Şifre</th>
-                            <th>Status</th>
                             <th>Şehir</th>
                             <th>İlçe</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(user,index) in users">
-                            <td>{{index + 1}}</td>
-                            <td>{{user.name}}</td>
-                            <td>{{user.role}}</td>
-                            <td>Email</td>
-                            <td>Şifre</td>
-                            <td>Status</td>
-                            <td>Şehir</td>
-                            <td>İlçe</td>
+                        <tr v-for="(item, index) in users"  class="table" :class="[item.status ? 'table table-primary' : 'table table-secondary']">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.surname}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.password}}</td>
+                            <td>{{item.sehir}}</td>
+                            <td>{{item.ilce}}</td>
                             <td style="width: 150px">
-                                <button type="button" class="btn btn-danger btn-sm pull-right ml-2"
-                                        @click="deleteUser(user.id)">Delete
+                                <button type="button" class="btn btn-danger btn-sm pull-right mr-2"
+                                        @click="deleteUser(index)">Delete
                                 </button>
-                                <button type="button" class="btn btn-warning btn-sm pull-right ml-2"
+                                <button type="button" class="btn btn-warning btn-sm pull-right mr-2"
                                         @click="editUser(user)">Edit
                                 </button>
+                                <input type="checkbox" class="checkbox active mr-2" v-model="item.status">
                             </td>
                         </tr>
+                       
                         </tbody>
                     </table>
                 </div>
@@ -100,24 +98,51 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <h5 class="modal-title" id="exampleModalLabel">New User</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form>
+                <div class="mb-3 row">
+                    <div class="mb-3 col-6">
+                        <label for="recipient-name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="recipient-name" v-model="newItem.name">
+                    </div >
+                        <div class="mb-3 col-6">
+                        <label for="recipient-name" class="col-form-label">Surname:</label>
+                        <input type="text" class="form-control" id="recipient-name" v-model="newItem.surname">
+                      </div>
+
+                </div>
+              
               <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                <input type="text" class="form-control" id="recipient-name">
+                <label for="recipient-name" class="col-form-label">Email:</label>
+                <input type="text" class="form-control" id="recipient-name" v-model="newItem.email">
               </div>
               <div class="mb-3">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="message-text"></textarea>
+                <label for="recipient-name" class="col-form-label">Password:</label>
+                <input type="text" class="form-control" v-on:keypress.q="logg()" id="recipient-name" v-model="newItem.password">
               </div>
+             
+              <div class="mb-3">
+                <select class="form-select" v-model="selectedCity" >
+                    <option selected="true" disabled>Sehir Seciniz</option>
+                    <option v-for="item in sehirler">{{item.sehir}}</option>
+                </select>
+              </div>
+             
+              <div class="mb-3">
+                <select class="form-select" v-model="newItem.ilce">
+                    <option selected="true" disabled>Ilce Seciniz</option>
+                    <option  v-if="selectedCity" v-for="item in listDisct(selectedCity)">{{item}}</option>
+                </select>
+              </div>
+              
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Send message</button>
+            <button type="button" class="btn btn-primary" @click="saveItem()">Kaydet</button>
           </div>
         </div>
       </div>
@@ -134,8 +159,129 @@
         Vue.createApp({
             data(){
                 return{
-                    header:"Bu da Vue 3"
+                    header:"Bu da Vue 3",
+                    
+                    newItem: {
+                        id:'',
+                        name:'',
+                        surname:'',
+                        email:'',
+                        password: '',
+                        sehir: '',
+                        status:true
+                    },
+                    selectedCity:'',
+                    selectedDist:[],
+                    users:[
+                        {
+                        id:1,
+                        name:'Can',
+                        surname:'Coksoyler',
+                        email:'cncoksoyler@gmail.com',
+                        password: '12345678',
+                        sehir:'Ankara',
+                        ilce:'Aydinikevler',
+                        status:true
+                    },
+                    {
+                        id:2,
+                        name:'Baris',
+                        surname:'Menderes',
+                        email:'bmenderes@gmail.com',
+                        password: '12345678',
+                        sehir:'Kocaeli',
+                        ilce:'Gebze',
+                        status:false
+                    }
+                ],
+
+                sehirler:[
+                    {
+                        sehir:'Ankara',
+                        ilceler:[
+                            'Altindag',
+                            'Aydinlikevler',
+                            'Kizilcahamam',
+                            'Mamak',
+                            'Gölbasi',
+                            'Haymana'
+                        ]
+                    },
+                    {
+                        sehir:'Kocaeli',
+                        ilceler:[
+                            'Kartepe',
+                            'Gebze',
+                            'Çayirova',
+                            'Izmit'
+                            
+                        ]
+                    },
+                    {
+                        sehir:'Istanbul',
+                        ilceler:[
+                            'Beyoglu',
+                            'Bakirkoy',
+                            'Zeytinburnu',
+                            'Sisli',
+                            'Tuzla',
+                            'Kadikoy'
+                        ]
+                    }
+                ]
+                   
+
                 }
+
+            },
+            methods:{
+                saveItem(){
+                    this.newItem.id=this.lastId+1
+                    this.newItem.sehir=this.selectedCity
+                    this.users.push(this.newItem)
+                    console.log(this.newItem)
+                    console.log(this.users)
+                    this.newItem= {
+                        id:'',
+                        name:'',
+                        surname:'',
+                        email:'',
+                        password: '',
+                        sehir: '',
+                        status:true
+                    }
+                    this.selectedCity=''
+                },
+                deleteUser(ind){
+                    console.log(ind)
+                    this.users.splice(ind,1)
+                },
+                listDisct(inputCityName){
+                    for(let i = 0; i < this.sehirler.length;i++){
+                        if(inputCityName === this.sehirler[i].sehir){
+                        return this.sehirler[i].ilceler;
+
+                        }
+                       
+                    }
+                    
+
+                },
+                logg(){
+                    console.log(this.newItem)
+                }
+            },
+            computed:{
+               ilcelerComputed(){
+                   return listDisct(this.selectedCity)
+               },
+               lastId(){
+                   return this.users[this.users.length-1].id
+               }, 
+               izleme(){
+                   this.selectedCity
+               }
+
             }
 
 
