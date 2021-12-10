@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-primary">Users</h2>
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">+ Add</button>
+                    <button type="button" class="btn btn-success" @click="clearNewUser()" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">+ Add</button>
                     <table class="table table-bordered table-hover">
                         <thead>
                         <tr class="bg-primary text-white">
@@ -45,7 +45,7 @@
                                         @click="deleteUser(index)">Delete
                                 </button>
                                 <button type="button" class="btn btn-warning btn-sm pull-right mr-2"
-                                        @click="editUser(user)">Edit
+                                        @click="editUser(index)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit
                                 </button>
                                 <input type="checkbox" class="checkbox active mr-2" v-model="item.status">
                             </td>
@@ -102,7 +102,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form v-on:submit.prevent="">
                 <div class="mb-3 row">
                     <div class="mb-3 col-6">
                         <label for="recipient-name" class="col-form-label">Name:</label>
@@ -127,14 +127,14 @@
               <div class="mb-3">
                 <select class="form-select" v-model="selectedCity" >
                     <option selected="true" disabled>Sehir Seciniz</option>
-                    <option v-for="item in sehirler">{{item.sehir}}</option>
+                    <option  :value="item" v-for="(item, index) in sehirler">{{item.sehir}}</option>
                 </select>
               </div>
              
               <div class="mb-3">
                 <select class="form-select" v-model="newItem.ilce">
                     <option selected="true" disabled>Ilce Seciniz</option>
-                    <option  v-if="selectedCity" v-for="item in listDisct(selectedCity)">{{item}}</option>
+                    <option v-if="selectedCity" v-for="item in selectedCity.ilceler">{{item}}</option>
                 </select>
               </div>
               
@@ -142,7 +142,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" @click="saveItem()">Kaydet</button>
+            <button type="submit" class="btn btn-primary" @click="saveItem()">Kaydet</button>
           </div>
         </div>
       </div>
@@ -160,7 +160,7 @@
             data(){
                 return{
                     header:"Bu da Vue 3",
-                    
+                    userToEditID:'',
                     newItem: {
                         id:'',
                         name:'',
@@ -171,6 +171,7 @@
                         status:true
                     },
                     selectedCity:'',
+                    selectedCityId:'',
                     selectedDist:[],
                     users:[
                         {
@@ -236,9 +237,20 @@
             },
             methods:{
                 saveItem(){
-                    this.newItem.id=this.lastId+1
-                    this.newItem.sehir=this.selectedCity
-                    this.users.push(this.newItem)
+                    
+                    
+                    if(this.newItem.id !=='')
+                    {
+                        this.newItem.sehir=this.selectedCity.sehir
+                        this.users[this.userToEditID]=  Object.assign({}, this.newItem);
+                    }
+                    else
+                    {
+                        this.newItem.id=this.lastId+1
+                        this.newItem.sehir=this.selectedCity.sehir
+                        this.users.push(this.newItem)
+                    }
+                    
                     console.log(this.newItem)
                     console.log(this.users)
                     this.newItem= {
@@ -252,9 +264,24 @@
                     }
                     this.selectedCity=''
                 },
+                clearNewUser(){
+                    this.newItem= {
+                        id:'',
+                        name:'',
+                        surname:'',
+                        email:'',
+                        password: '',
+                        sehir: '',
+                        status:true
+                    }
+                },
                 deleteUser(ind){
                     console.log(ind)
                     this.users.splice(ind,1)
+                },
+                editUser(ind){
+                    this.newItem = Object.assign({}, this.users[ind]);
+                    this.userToEditID=ind
                 },
                 listDisct(inputCityName){
                     for(let i = 0; i < this.sehirler.length;i++){
