@@ -1,14 +1,16 @@
 <template>
-    <h2>Hi from Vue 3 </h2>
-  
+  <div>Name: {{ name }}</div>
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
-
-}
+  setup() {
+    const name = ref("baris");
+    return { name };
+  },
+};
 </script>
 
 <style>
-
 </style>
