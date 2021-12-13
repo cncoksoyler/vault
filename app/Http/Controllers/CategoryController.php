@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Location;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,6 +16,20 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        if (\request()->filled('search')) {
+        $search = \request()->search;
+        $category = Category::
+            where('name', 'like', "%$search%")
+            ->orderBy('id', 'DESC')
+            ->paginate(5)
+            ->appends('search', $search);             
+      
+        }else{
+        $category = Category::
+            orderBy('id', 'DESC')
+            ->paginate(5);        
+        };
+        return view('category/categorylist')->with(['category'=>$category]);
         //
     }
 
