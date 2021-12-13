@@ -13,7 +13,6 @@ class StockDetail extends Model
 
 public function modelProducts(){
     return $this->belongsTo(Product::class,'product_id');
-    
 }
 
 public function modelLocations(){
