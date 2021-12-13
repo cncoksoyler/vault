@@ -24382,7 +24382,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
-    var name = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)('baris');
+    var name = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)("baris");
     return {
       name: name
     };
