@@ -1,11 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-<<<<<<< HEAD
-use App\Http\Controllers\MachineController;
-=======
 use App\Http\Controllers\LocationController;
->>>>>>> app-baris
 use App\Http\Controllers\StockDetailController;
 use Illuminate\Support\Facades\Route;
 
