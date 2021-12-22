@@ -15,8 +15,7 @@ class AddCreateStockDetailsTable extends Migration
     {
         
         Schema::table('stock_details', function (Blueprint $table) {
-           
-           
+                  
             
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('location_id')->references('id')->on('locations');

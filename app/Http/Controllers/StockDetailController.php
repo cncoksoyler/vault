@@ -19,6 +19,7 @@ class StockDetailController extends Controller
     {
         //
         $stock = StockDetail::with('modelProducts','modelLocations','modelUsers','modelInputSources')->get()->toArray();
+        /* $stock->with('modelProducts','modelLocations','modelUsers','modelInputSources')->get()->toArray(); */
   
       /*  dd($stock); */
 
