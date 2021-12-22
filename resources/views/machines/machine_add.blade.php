@@ -25,9 +25,11 @@
                                         <div>
                                             <label class="text-gray-700 dark:text-gray-200" for="amg">AMG</label>
                                             <select class="w-full block border border-gray-300 bg-white text-gray-700 rounded px-3 py-2 outline-none mt-2">
-                                                <option class="py-1">AMG 7</option>
-                                                <option class="py-1">AMG 8</option>
-                                                <option class="py-1">Others</option>
+                                                @foreach ($areaData as $area )
+                                                    <option class="py-1">{{$area->AMG}}</option> 
+                                                @endforeach    
+                                            
+                                                
                                             </select>
 
 

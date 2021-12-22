@@ -28,7 +28,8 @@ class MachineController extends Controller
     public function create()
     {
         $machineData = Machine::all();
-        return view('machines.machine_add', compact('machineData'));
+        $areaData = Machine::distinct()->get('AMG');
+        return view('machines.machine_add', compact('machineData','areaData'));
     }
 
     /**
