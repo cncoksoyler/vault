@@ -28,8 +28,9 @@ class MachineController extends Controller
     public function create()
     {
         $machineData = Machine::all();
-        $areaData = Machine::distinct()->get('AMG');
-        return view('machines.machine_add', compact('machineData','areaData'));
+        $amgData = Machine::distinct()->get('AMG');
+        $areaData = Machine::distinct()->get('area');
+        return view('machines.machine_add', compact('machineData','amgData','areaData'));
     }
 
     /**
@@ -40,14 +41,28 @@ class MachineController extends Controller
      */
     public function store(Request $request)
     {
+        
         //buraya validateCategory tarzı bir fonkisyon alınabilir
+        $validated = $request->validate([
+            'name'=>'required|max:20',
+            'AMG'=>'required',
+            'area'=>'required'
+
+        ]);
+    // dd($request);
         Machine::create([
             'name'=>$request->name,
             'AMG'=> $request->AMG,
             'area'=>$request->area
 
         ]);
-        return 'store';
+
+
+        return redirect()->route('machines.index')
+        ->with([
+            'message' =>"Ürününüz başarıyla eklendi",
+            'message_type' =>'success'
+        ]);
     }
 
     /**
